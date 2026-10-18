@@ -29,6 +29,10 @@ func set_value(input_value) -> void:
 	animation_copy.track_set_key_value(0, 10, atlas_texture)
 	self.texture = atlas_texture
 	self.value = input_value
+	if input_value == 1:
+		get_node("value").text = "+" + str(6)
+	else:
+		get_node("value").text = "+" + str(input_value - 1)
 	
 	library_copy.add_animation("roll", animation_copy)
 	player.rename_animation_library("", "default")

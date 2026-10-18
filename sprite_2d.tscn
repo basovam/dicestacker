@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cai0u30pmbh5y"]
+[gd_scene load_steps=10 format=3 uid="uid://cai0u30pmbh5y"]
 
 [ext_resource type="Texture2D" uid="uid://ha5ddawo0atl" path="res://dice_simple.png" id="1_mehiu"]
 [ext_resource type="Script" uid="uid://b1yfeo4xvu32y" path="res://die.gd" id="2_lt4yx"]
+[ext_resource type="FontFile" uid="uid://cpihhryjs433t" path="res://fonts/SourceSans3-Bold.ttf" id="3_lt4yx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e48y"]
 atlas = ExtResource("1_mehiu")
@@ -24,6 +25,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [SubResource("AtlasTexture_0e48y")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("value:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-35, -50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("value:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.258824, 0.419608, 0.345098, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_mehiu"]
 resource_name = "roll"
@@ -40,10 +65,38 @@ tracks/0/keys = {
 "values": [SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y")]
 }
 
+[sub_resource type="Animation" id="Animation_i1wwn"]
+resource_name = "value_slide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("value:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-35, -50), Vector2(-35, -150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("value:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.258824, 0.419608, 0.345098, 0), Color(0.258824, 0.419608, 0.345098, 1), Color(0.258824, 0.419608, 0.345098, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i1wwn"]
 _data = {
 &"RESET": SubResource("Animation_lt4yx"),
-&"roll": SubResource("Animation_mehiu")
+&"roll": SubResource("Animation_mehiu"),
+&"value_slide": SubResource("Animation_i1wwn")
 }
 
 [node name="Sprite2D" type="Sprite2D"]
@@ -62,3 +115,15 @@ shape = SubResource("RectangleShape2D_0e48y")
 libraries = {
 &"": SubResource("AnimationLibrary_i1wwn")
 }
+
+[node name="value" type="Label" parent="."]
+offset_left = -35.0
+offset_top = -50.0
+offset_right = 35.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.258824, 0.419608, 0.345098, 0)
+theme_override_fonts/font = ExtResource("3_lt4yx")
+theme_override_font_sizes/font_size = 64
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1

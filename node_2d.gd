@@ -13,8 +13,6 @@ var row_size
 #TODO action lock while dice animated
 #TODO tutorial (gif with dragging process?)
 #TODO code cleanup
-#TODO score increasing animation
-#TODO stacking dice animation
 #TODO "lifes" and achivement. Skins?
 
 #Idea: show possible moves while dragging die
@@ -100,6 +98,7 @@ func _input( event ):
 					var closest_die_index = int(closest_die.get_parent().name.substr(5, -1))
 					if abs(dragged_die_cell_index - closest_die_index) == row_size or (abs(dragged_die_cell_index - closest_die_index) == 1 and (dragged_die_cell_index-1)/row_size == (closest_die_index-1)/row_size):
 						if closest_die.value == dragged_die.value:
+							closest_die.get_node("AnimationPlayer").play("value_slide")
 							score += dragged_die.value
 							get_node("score").text = str(score)
 							closest_die.set_value(closest_die.value % 6 + 1)
