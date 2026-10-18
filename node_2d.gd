@@ -11,8 +11,7 @@ var size
 var row_size
 
 #TODO action lock while dice animated
-#TODO bugfix withoverlaping/positioning
-#TODO tutorial
+#TODO tutorial (gif with dragging process?)
 #TODO code cleanup
 #TODO score increasing animation
 #TODO stacking dice animation

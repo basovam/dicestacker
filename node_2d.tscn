@@ -312,27 +312,29 @@ z_index = 2
 offset_left = 40.0
 offset_top = 180.0
 offset_right = 440.0
-offset_bottom = 380.0
+offset_bottom = 400.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_epypp")
 
 [node name="Label" type="Label" parent="tutorial"]
 layout_mode = 0
 offset_right = 400.0
-offset_bottom = 40.0
+offset_bottom = 165.0
 theme_override_colors/font_color = Color(0.12549, 0.12549, 0.12549, 1)
 theme_override_fonts/font = ExtResource("4_q6r6c")
 theme_override_font_sizes/font_size = 26
-text = "Stuck dice with same value to get
-score until no turns lefts!"
+text = "Drag dice to nearest die with the
+same value to get score.
+Repeait until no turns lefts.
+Get the maximun score!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="tutorial_button" type="Button" parent="tutorial"]
 layout_mode = 0
 offset_left = 110.0
-offset_top = 148.0
+offset_top = 165.0
 offset_right = 290.0
-offset_bottom = 192.0
+offset_bottom = 210.0
 theme_override_colors/font_hover_pressed_color = Color(0.12549, 0.12549, 0.12549, 1)
 theme_override_colors/font_hover_color = Color(0.12549, 0.12549, 0.12549, 1)
 theme_override_colors/font_color = Color(0.12549, 0.12549, 0.12549, 1)
