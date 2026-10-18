@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://cai0u30pmbh5y"]
+
+[ext_resource type="Texture2D" uid="uid://ha5ddawo0atl" path="res://dice_simple.png" id="1_mehiu"]
+[ext_resource type="Script" uid="uid://b1yfeo4xvu32y" path="res://die.gd" id="2_lt4yx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e48y"]
+atlas = ExtResource("1_mehiu")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(200, 200)
+
+[sub_resource type="Animation" id="Animation_lt4yx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_0e48y")]
+}
+
+[sub_resource type="Animation" id="Animation_mehiu"]
+resource_name = "roll"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y"), SubResource("AtlasTexture_0e48y")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1wwn"]
+_data = {
+&"RESET": SubResource("Animation_lt4yx"),
+&"roll": SubResource("Animation_mehiu")
+}
+
+[node name="Sprite2D" type="Sprite2D"]
+z_index = 1
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_0e48y")
+script = ExtResource("2_lt4yx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6.10352e-05, 0)
+shape = SubResource("RectangleShape2D_0e48y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i1wwn")
+}
