@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var dragged_die
 var dragged_die_position
@@ -7,10 +7,12 @@ var dragged_die_cell_index
 var position_dif
 var closest_die
 var score
-var size
+var field_size
 var row_size
 
 #TODO action lock while dice animated
+#TODO fix bug: trigger stacking without moving if match to the right
+#TODO finish animation before end-game screen
 #TODO tutorial (gif with dragging process?)
 #TODO code cleanup
 #TODO "lifes" and achivement. Skins?
@@ -18,9 +20,9 @@ var row_size
 #Idea: show possible moves while dragging die
 
 func end_game_check() -> bool:
-	for i in range(size):
+	for i in range(field_size):
 		for j in [i-row_size, i-1, i+1, i+row_size]:
-			if j >= 0 and j < size:
+			if j >= 0 and j < field_size:
 				if abs(j - i) == row_size or (abs(j - i) == 1 and (i)/row_size == (j)/row_size):
 					#print(str(i) + ' - ' + str(j))
 					var i_value
@@ -48,17 +50,17 @@ func new_game() -> void:
 	score = 0
 	get_node("score").text = str(score)
 	while end_game_check():
-		for i in range(size):
+		for i in range(field_size):
 			for c in get_node("GridContainer").get_node("Panel" + str(i+1)).get_children():
 				if c.name.begins_with("Sprite2D"):
 					c.set_value(randi_range(1,6))
 					c.get_node("AnimationPlayer").play("roll")
 
 func _on_ready() -> void:
-	size = get_node("GridContainer").columns * get_node("GridContainer").columns
+	field_size = get_node("GridContainer").columns * get_node("GridContainer").columns
 	row_size = get_node("GridContainer").columns
 	var rnd = RandomNumberGenerator.new()
-	for i in range(size):
+	for i in range(field_size):
 		get_die(i+1)
 	new_game()
 
