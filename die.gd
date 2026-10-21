@@ -1,6 +1,7 @@
 extends Sprite2D
 
 var value
+var actionable = true
 
 func set_value(input_value) -> void:
 	var player = get_node("AnimationPlayer")
@@ -37,3 +38,11 @@ func set_value(input_value) -> void:
 	library_copy.add_animation("roll", animation_copy)
 	player.rename_animation_library("", "default")
 	player.add_animation_library("", library_copy)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	actionable = true
+	var root = self.get_parent().get_parent().get_parent()
+	if root.end_game_check():
+		root.get_node("end_game").visible = true
+		root.get_node("end_game").get_node("Label3").text = str(root.score)

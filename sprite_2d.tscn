@@ -127,3 +127,5 @@ theme_override_font_sizes/font_size = 96
 text = "+1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

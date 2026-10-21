@@ -10,9 +10,7 @@ var score
 var field_size
 var row_size
 
-#TODO action lock while dice animated
 #TODO fix bug: trigger stacking without moving if match to the right
-#TODO finish animation before end-game screen
 #TODO tutorial (gif with dragging process?)
 #TODO code cleanup
 #TODO "lifes" and achivement. Skins?
@@ -42,6 +40,7 @@ func get_die(i) -> void:
 	var die_raw = load("sprite_2d.tscn")
 	var die = die_raw.instantiate()
 	die.set_value(die_value)
+	die.actionable = false
 	die.get_node("AnimationPlayer").play("roll")
 	get_node("GridContainer").get_node("Panel" + str(i)).add_child(die)
 	die.position = Vector2(42, 42)
@@ -77,12 +76,13 @@ func _input( event ):
 			if result.size() > 0:
 				for r in result:
 					if r.collider.get_parent().name.begins_with("Sprite2D"):
-						dragged_die = r.collider.get_parent()
-						dragged_die_position = dragged_die.position
-						position_dif = (dragged_die.position - mouse_pos)
-						dragged_die_cell_index = int(dragged_die.get_parent().name.substr(5, -1))
-						dragged_die_z_index = dragged_die.z_index
-						dragged_die.z_index += 1
+						if r.collider.get_parent().actionable:
+							dragged_die = r.collider.get_parent()
+							dragged_die_position = dragged_die.position
+							position_dif = (dragged_die.position - mouse_pos)
+							dragged_die_cell_index = int(dragged_die.get_parent().name.substr(5, -1))
+							dragged_die_z_index = dragged_die.z_index
+							dragged_die.z_index += 1
 		else:
 			if dragged_die:
 				var min_dist
@@ -107,9 +107,6 @@ func _input( event ):
 							dragged_die.reparent(self)
 							dragged_die.queue_free()
 							get_die(dragged_die_cell_index)
-							if end_game_check():
-								get_node("end_game").visible = true
-								get_node("end_game").get_node("Label3").text = str(score)
 				dragged_die.position = dragged_die_position
 				dragged_die.z_index = dragged_die_z_index
 				dragged_die_position = null
