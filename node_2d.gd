@@ -10,19 +10,14 @@ var score
 var field_size
 var row_size
 
-#TODO fix bug: trigger stacking without moving if match to the right
 #TODO tutorial (gif with dragging process?)
 #TODO code cleanup
-#TODO "lifes" and achivement. Skins?
-
-#Idea: show possible moves while dragging die
 
 func end_game_check() -> bool:
 	for i in range(field_size):
 		for j in [i-row_size, i-1, i+1, i+row_size]:
 			if j >= 0 and j < field_size:
 				if abs(j - i) == row_size or (abs(j - i) == 1 and (i)/row_size == (j)/row_size):
-					#print(str(i) + ' - ' + str(j))
 					var i_value
 					for c in get_node("GridContainer").get_node("Panel" + str(i+1)).get_children():
 						if c.name.begins_with("Sprite2D"):
@@ -107,6 +102,7 @@ func _input( event ):
 							dragged_die.reparent(self)
 							dragged_die.queue_free()
 							get_die(dragged_die_cell_index)
+							closest_die = null
 				dragged_die.position = dragged_die_position
 				dragged_die.z_index = dragged_die_z_index
 				dragged_die_position = null

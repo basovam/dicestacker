@@ -1,13 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjmb5blabggv8"]
+[gd_scene load_steps=10 format=3 uid="uid://cjmb5blabggv8"]
 
 [ext_resource type="Script" uid="uid://54cmghm2wpx3" path="res://node_2d.gd" id="1_epypp"]
 [ext_resource type="StyleBox" uid="uid://bo3fc3f6usvx2" path="res://cell_style.tres" id="2_0e48y"]
 [ext_resource type="FontFile" uid="uid://m5cilrr0f2jy" path="res://fonts/SourceSans3-ExtraBold.ttf" id="3_epypp"]
 [ext_resource type="FontFile" uid="uid://iv8hs8wgwsbb" path="res://fonts/SourceSans3-Regular.ttf" id="4_q6r6c"]
 [ext_resource type="FontFile" uid="uid://cpihhryjs433t" path="res://fonts/SourceSans3-Bold.ttf" id="5_kdubu"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
-size = Vector2(84, 84)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epypp"]
 bg_color = Color(0.65098, 0.627451, 0.584314, 1)
@@ -87,176 +84,80 @@ custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
 
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel1/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
-
 [node name="Panel2" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
-
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel2/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Panel3" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
 
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel3/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
-
 [node name="Panel4" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
-
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel4/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Panel5" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
 
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel5/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
-
 [node name="Panel6" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
-
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel6/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Panel7" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
 
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel7/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
-
 [node name="Panel8" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
-
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel8/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Panel9" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
 
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel9/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
-
 [node name="Panel10" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
-
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel10/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Panel11" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
 
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel11/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
-
 [node name="Panel12" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
-
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel12/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Panel13" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
 
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel13"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel13/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
-
 [node name="Panel14" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
-
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel14"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel14/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Panel15" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
 
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel15"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel15/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
-
 [node name="Panel16" type="Panel" parent="GridContainer"]
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_0e48y")
-
-[node name="Area2D" type="Area2D" parent="GridContainer/Panel16"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GridContainer/Panel16/Area2D"]
-position = Vector2(42, 42)
-shape = SubResource("RectangleShape2D_epypp")
 
 [node name="end_game" type="Panel" parent="."]
 visible = false
