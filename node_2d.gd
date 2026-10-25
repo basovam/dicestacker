@@ -9,8 +9,8 @@ var closest_die
 var score
 var field_size
 var row_size
+var start_game = true
 
-#TODO tutorial (gif with dragging process?)
 #TODO code cleanup
 
 func end_game_check() -> bool:
@@ -19,11 +19,11 @@ func end_game_check() -> bool:
 			if j >= 0 and j < field_size:
 				if abs(j - i) == row_size or (abs(j - i) == 1 and (i)/row_size == (j)/row_size):
 					var i_value
-					for c in get_node("GridContainer").get_node("Panel" + str(i+1)).get_children():
+					for c in get_node("GridContainer/Panel" + str(i+1)).get_children():
 						if c.name.begins_with("Sprite2D"):
 							i_value = c.value
 					var j_value
-					for c in get_node("GridContainer").get_node("Panel" + str(j+1)).get_children():
+					for c in get_node("GridContainer/Panel" + str(j+1)).get_children():
 						if c.name.begins_with("Sprite2D"):
 							j_value = c.value
 					if i_value and j_value and i_value == j_value:
@@ -37,7 +37,7 @@ func get_die(i) -> void:
 	die.set_value(die_value)
 	die.actionable = false
 	die.get_node("AnimationPlayer").play("roll")
-	get_node("GridContainer").get_node("Panel" + str(i)).add_child(die)
+	get_node("GridContainer/Panel" + str(i)).add_child(die)
 	die.position = Vector2(42, 42)
 
 func new_game() -> void:
@@ -45,7 +45,7 @@ func new_game() -> void:
 	get_node("score").text = str(score)
 	while end_game_check():
 		for i in range(field_size):
-			for c in get_node("GridContainer").get_node("Panel" + str(i+1)).get_children():
+			for c in get_node("GridContainer/Panel" + str(i+1)).get_children():
 				if c.name.begins_with("Sprite2D"):
 					c.set_value(randi_range(1,6))
 					c.get_node("AnimationPlayer").play("roll")
@@ -66,7 +66,6 @@ func _input( event ):
 			var query = PhysicsPointQueryParameters2D.new()
 			query.position = mouse_pos
 			query.collide_with_areas = true
-			#query.collision_mask = 1
 			var result = space_state.intersect_point(query)
 			if result.size() > 0:
 				for r in result:
@@ -114,10 +113,12 @@ func _process( delta ):
 		dragged_die.position = mouse_pos + position_dif
 
 
-func _on_button_button_up() -> void:
+func _on_new_game_button_up() -> void:
 	get_node("end_game").visible = false
 	new_game()
 
 
-func _on_tutorial_button_button_up() -> void:
+func _on_stert_game_button_up() -> void:
+	start_game = false
 	get_node("tutorial").visible = false
+	

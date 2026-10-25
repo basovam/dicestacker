@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjmb5blabggv8"]
+[gd_scene load_steps=16 format=3 uid="uid://cjmb5blabggv8"]
 
 [ext_resource type="Script" uid="uid://54cmghm2wpx3" path="res://node_2d.gd" id="1_epypp"]
 [ext_resource type="StyleBox" uid="uid://bo3fc3f6usvx2" path="res://cell_style.tres" id="2_0e48y"]
 [ext_resource type="FontFile" uid="uid://m5cilrr0f2jy" path="res://fonts/SourceSans3-ExtraBold.ttf" id="3_epypp"]
 [ext_resource type="FontFile" uid="uid://iv8hs8wgwsbb" path="res://fonts/SourceSans3-Regular.ttf" id="4_q6r6c"]
 [ext_resource type="FontFile" uid="uid://cpihhryjs433t" path="res://fonts/SourceSans3-Bold.ttf" id="5_kdubu"]
+[ext_resource type="Texture2D" uid="uid://ha5ddawo0atl" path="res://dice_simple.png" id="6_kdubu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epypp"]
 bg_color = Color(0.65098, 0.627451, 0.584314, 1)
@@ -34,6 +35,55 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir8iy"]
+bg_color = Color(0.815686, 0.815686, 0.792157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqns4"]
+atlas = ExtResource("6_kdubu")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="Animation" id="Animation_x0ka3"]
+resource_name = "tutorial"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("example_container/Panel1/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(42, 42), Vector2(138, 42), Vector2(138, 42)]
+}
+
+[sub_resource type="Animation" id="Animation_0h7mo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("example_container/Panel1/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(42, 42)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nr8wp"]
+_data = {
+&"RESET": SubResource("Animation_0h7mo"),
+&"tutorial": SubResource("Animation_x0ka3")
+}
+
 [node name="Node2D" type="Control"]
 layout_mode = 3
 anchors_preset = 8
@@ -50,6 +100,7 @@ grow_vertical = 2
 script = ExtResource("1_epypp")
 
 [node name="score_label" type="Label" parent="."]
+layout_mode = 0
 offset_right = 480.0
 offset_bottom = 60.0
 theme_override_colors/font_color = Color(0.258824, 0.419608, 0.345098, 1)
@@ -60,6 +111,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="score" type="Label" parent="."]
+layout_mode = 0
 offset_top = 60.0
 offset_right = 480.0
 offset_bottom = 145.0
@@ -71,6 +123,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
 offset_left = 54.0
 offset_top = 150.0
 offset_right = 426.0
@@ -162,6 +215,7 @@ theme_override_styles/panel = ExtResource("2_0e48y")
 [node name="end_game" type="Panel" parent="."]
 visible = false
 z_index = 2
+layout_mode = 0
 offset_left = 40.0
 offset_top = 180.0
 offset_right = 440.0
@@ -191,7 +245,7 @@ text = "Your score is"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="end_game"]
+[node name="score" type="Label" parent="end_game"]
 layout_mode = 0
 offset_top = 90.0
 offset_right = 400.0
@@ -203,7 +257,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="end_game"]
+[node name="new_game" type="Button" parent="end_game"]
 layout_mode = 0
 offset_left = 110.0
 offset_top = 148.0
@@ -221,33 +275,85 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4d7sh")
 text = "New Game"
 
 [node name="tutorial" type="Panel" parent="."]
+visible = false
 z_index = 2
-offset_left = 40.0
-offset_top = 180.0
-offset_right = 440.0
-offset_bottom = 400.0
+layout_mode = 0
+offset_left = 30.0
+offset_top = 166.0
+offset_right = 450.0
+offset_bottom = 506.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_epypp")
 
-[node name="Label" type="Label" parent="tutorial"]
+[node name="tutorial_text" type="Label" parent="tutorial"]
 layout_mode = 0
-offset_right = 400.0
-offset_bottom = 165.0
+offset_right = 420.0
+offset_bottom = 160.0
 theme_override_colors/font_color = Color(0.12549, 0.12549, 0.12549, 1)
 theme_override_fonts/font = ExtResource("4_q6r6c")
-theme_override_font_sizes/font_size = 26
-text = "Drag dice to nearest die with the
-same value to get score.
-Repeait until no turns lefts.
-Get the maximun score!"
+theme_override_font_sizes/font_size = 22
+text = "Match dice by dragging them to neighbors
+with the same value to earn points.
+Keep playing until all turns are used.
+Achieve the highest score!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="tutorial_button" type="Button" parent="tutorial"]
+[node name="Panel" type="Panel" parent="tutorial"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 160.0
+offset_right = 302.0
+offset_bottom = 268.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ir8iy")
+
+[node name="example_container" type="HBoxContainer" parent="tutorial/Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 184.0
+offset_bottom = 96.0
+theme_override_constants/separation = 12
+
+[node name="Panel1" type="Panel" parent="tutorial/Panel/example_container"]
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial/Panel/example_container/Panel1"]
+z_index = 2
+position = Vector2(42, 42)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_hqns4")
+
+[node name="Label" type="Label" parent="tutorial/Panel/example_container/Panel1/Sprite2D"]
+offset_left = -20.0
+offset_right = 76.0
+offset_bottom = 131.0
+theme_override_fonts/font = ExtResource("3_epypp")
+theme_override_font_sizes/font_size = 91
+text = "👆"
+
+[node name="Panel2" type="Panel" parent="tutorial/Panel/example_container"]
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial/Panel/example_container/Panel2"]
+position = Vector2(42, 42)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_hqns4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tutorial/Panel"]
+libraries = {
+&"": SubResource("AnimationLibrary_nr8wp")
+}
+
+[node name="start_game" type="Button" parent="tutorial"]
 layout_mode = 0
 offset_left = 110.0
-offset_top = 165.0
+offset_top = 280.0
 offset_right = 290.0
-offset_bottom = 210.0
+offset_bottom = 325.0
 theme_override_colors/font_hover_pressed_color = Color(0.12549, 0.12549, 0.12549, 1)
 theme_override_colors/font_hover_color = Color(0.12549, 0.12549, 0.12549, 1)
 theme_override_colors/font_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -260,5 +366,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4d7sh")
 text = "Start Game"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="button_up" from="end_game/Button" to="." method="_on_button_button_up"]
-[connection signal="button_up" from="tutorial/tutorial_button" to="." method="_on_tutorial_button_button_up"]
+[connection signal="button_up" from="end_game/new_game" to="." method="_on_new_game_button_up"]
+[connection signal="button_up" from="tutorial/start_game" to="." method="_on_stert_game_button_up"]

@@ -43,6 +43,9 @@ func set_value(input_value) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	actionable = true
 	var root = self.get_parent().get_parent().get_parent()
+	if root.start_game:
+		root.get_node("tutorial").visible = true
+		root.get_node("tutorial/Panel/AnimationPlayer").play("tutorial")
 	if root.end_game_check():
 		root.get_node("end_game").visible = true
-		root.get_node("end_game").get_node("Label3").text = str(root.score)
+		root.get_node("end_game/score").text = str(root.score)
